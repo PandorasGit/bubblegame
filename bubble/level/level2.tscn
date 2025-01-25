@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://btnua346coyrt"]
+[gd_scene load_steps=8 format=3 uid="uid://btnua346coyrt"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_eb8q2"]
 [ext_resource type="PackedScene" uid="uid://f6ps83t05yju" path="res://launcher/launcher.tscn" id="2_nw4vr"]
 [ext_resource type="Script" path="res://level/score_hole.gd" id="4_cx6be"]
+[ext_resource type="Script" path="res://level/camera.gd" id="5_cwl8q"]
 [ext_resource type="PackedScene" uid="uid://bhdnbjonf5nx6" path="res://static block/static_block.tscn" id="5_dge46"]
 [ext_resource type="PackedScene" uid="uid://bl4ppvwgr4t0o" path="res://block/block.tscn" id="5_r85rf"]
 
@@ -90,6 +91,7 @@ rotation = 1.5708
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(577, 326)
+script = ExtResource("5_cwl8q")
 
 [node name="StaticBody2D" parent="." instance=ExtResource("5_dge46")]
 position = Vector2(800, 696)
