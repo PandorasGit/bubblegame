@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcrnh5pkakawv"]
+[gd_scene load_steps=8 format=3 uid="uid://c0e2rctl8i27o"]
 
-[ext_resource type="Script" path="res://level/level.gd" id="1_gseeq"]
-[ext_resource type="PackedScene" uid="uid://f6ps83t05yju" path="res://launcher/launcher.tscn" id="1_hgtue"]
-[ext_resource type="Texture2D" uid="uid://gw2ajqycyo80" path="res://icon.svg" id="2_vtsan"]
-[ext_resource type="PackedScene" uid="uid://bl4ppvwgr4t0o" path="res://block/block.tscn" id="3_75cwd"]
-[ext_resource type="Script" path="res://level/score_hole.gd" id="4_x0qmj"]
+[ext_resource type="Script" path="res://level/level.gd" id="1_xyjf3"]
+[ext_resource type="PackedScene" uid="uid://f6ps83t05yju" path="res://launcher/launcher.tscn" id="2_ad6ar"]
+[ext_resource type="Texture2D" uid="uid://gw2ajqycyo80" path="res://icon.svg" id="3_1xa6v"]
+[ext_resource type="Script" path="res://level/score_hole.gd" id="4_7jh51"]
+[ext_resource type="PackedScene" uid="uid://bl4ppvwgr4t0o" path="res://block/block.tscn" id="5_tahqh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sb3mg"]
 size = Vector2(54, 126)
@@ -13,10 +13,10 @@ size = Vector2(54, 126)
 size = Vector2(735, 242)
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_gseeq")
+script = ExtResource("1_xyjf3")
 next_level = "res://level2/level2.tscn"
 
-[node name="Launcher" parent="." instance=ExtResource("1_hgtue")]
+[node name="Launcher" parent="." instance=ExtResource("2_ad6ar")]
 position = Vector2(10, 549)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -25,14 +25,14 @@ position = Vector2(577, 646)
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(363, 31)
 scale = Vector2(0.390625, 1)
-texture = ExtResource("2_vtsan")
+texture = ExtResource("3_1xa6v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(363, 30)
 shape = SubResource("RectangleShape2D_sb3mg")
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("4_x0qmj")
+script = ExtResource("4_7jh51")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(941.5, 772)
@@ -45,11 +45,15 @@ text = "Score:0"
 
 [node name="Blocks" type="Node2D" parent="."]
 
-[node name="Block" parent="Blocks" instance=ExtResource("3_75cwd")]
+[node name="Block" parent="Blocks" instance=ExtResource("5_tahqh")]
 position = Vector2(940, 544)
 
-[node name="Block2" parent="Blocks" instance=ExtResource("3_75cwd")]
+[node name="Block2" parent="Blocks" instance=ExtResource("5_tahqh")]
 position = Vector2(940, 447)
+rotation = 1.5708
+
+[node name="Block3" parent="Blocks" instance=ExtResource("5_tahqh")]
+position = Vector2(940, 414)
 rotation = 1.5708
 
 [connection signal="block_entered" from="Area2D" to="." method="_on_area_2d_block_entered"]
