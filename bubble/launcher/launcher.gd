@@ -1,0 +1,22 @@
+extends CharacterBody2D
+
+var has_bubble := true
+
+
+func _process(delta: float) -> void:
+	var dir = Input.get_axis("up", "down")
+	rotation += dir * delta
+	if rotation <= deg_to_rad(-90):
+		rotation = deg_to_rad(-90)
+	elif rotation >= deg_to_rad(0):
+		rotation = deg_to_rad(0)
+	
+	if Input.is_action_just_pressed("blow"):
+		$Bubble.grow()
+	
+	if Input.is_action_just_pressed("fire") and has_bubble:
+
+		has_bubble = false
+		$Bubble.freeze = false
+		$Bubble.apply_impulse(Vector2(100* cos(rotation),100*sin(rotation)), $Bubble.position)
+		$Bubble.reparent(get_parent())

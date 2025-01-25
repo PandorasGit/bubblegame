@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://ba527knk6j3c5"]
+
+[ext_resource type="Script" path="res://bubble/bubble.gd" id="1_xnht4"]
+[ext_resource type="Texture2D" uid="uid://gw2ajqycyo80" path="res://icon.svg" id="2_4j6q7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tgich"]
+bounce = 0.25
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aty8o"]
+size = Vector2(64, 64)
+
+[node name="Bubble" type="RigidBody2D"]
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_tgich")
+gravity_scale = 0.238
+freeze = true
+script = ExtResource("1_xnht4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_aty8o")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(0, 0.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_4j6q7")
