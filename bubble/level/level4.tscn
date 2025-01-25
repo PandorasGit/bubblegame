@@ -12,7 +12,7 @@ size = Vector2(3312, 242)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_1f2hj")
-next_level = "res://level2/level2.tscn"
+next_level = "res://level/level5.tscn"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -63,47 +63,47 @@ shots = 5
 script = ExtResource("3_2fa6d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(4440, 840)
+position = Vector2(3840, 832)
 shape = SubResource("RectangleShape2D_6pl53")
 
 [node name="Blocks" type="Node2D" parent="."]
 
 [node name="Block" parent="Blocks" instance=ExtResource("4_rnyjg")]
-position = Vector2(4536, 625)
+position = Vector2(3936, 617)
 
 [node name="Block3" parent="Blocks" instance=ExtResource("4_rnyjg")]
-position = Vector2(4344, 624)
+position = Vector2(3744, 616)
 
 [node name="Block2" parent="Blocks" instance=ExtResource("4_rnyjg")]
-position = Vector2(4352, 544)
+position = Vector2(3752, 536)
 rotation = 1.5708
 
 [node name="Block5" parent="Blocks" instance=ExtResource("4_rnyjg")]
-position = Vector2(4448, 512)
+position = Vector2(3848, 504)
 rotation = 1.5708
 
 [node name="Block6" parent="Blocks" instance=ExtResource("4_rnyjg")]
-position = Vector2(4320, 512)
+position = Vector2(3720, 504)
 rotation = 1.5708
 
 [node name="Block7" parent="Blocks" instance=ExtResource("4_rnyjg")]
-position = Vector2(4576, 512)
+position = Vector2(3976, 504)
 rotation = 1.5708
 
 [node name="Block4" parent="Blocks" instance=ExtResource("4_rnyjg")]
-position = Vector2(4536, 544)
+position = Vector2(3936, 536)
 rotation = 1.5708
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(2304, -576)
-zoom = Vector2(0.25, 0.25)
+position = Vector2(2176, -496)
+zoom = Vector2(0.265, 0.265)
 script = ExtResource("5_uffui")
 
 [node name="StaticBody2D" parent="." instance=ExtResource("6_petwu")]
-position = Vector2(4344, 752)
+position = Vector2(3744, 744)
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("6_petwu")]
-position = Vector2(4536, 752)
+position = Vector2(3936, 744)
 
 [connection signal="block_entered" from="Area2D" to="." method="_on_area_2d_block_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

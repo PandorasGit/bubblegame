@@ -12,7 +12,7 @@ size = Vector2(3312, 242)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_lo1pc")
-next_level = "res://level2/level2.tscn"
+next_level = "res://level/level10.tscn"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
