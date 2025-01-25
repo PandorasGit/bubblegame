@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://f6ps83t05yju"]
 
 [ext_resource type="Script" path="res://launcher/launcher.gd" id="1_72bu8"]
-[ext_resource type="Texture2D" uid="uid://gw2ajqycyo80" path="res://icon.svg" id="2_6eodn"]
+[ext_resource type="Texture2D" uid="uid://ctki6rgm0u2b1" path="res://launcher/bottle.png" id="2_mtwlf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eucw3"]
 size = Vector2(183, 125)
@@ -10,9 +10,10 @@ size = Vector2(183, 125)
 script = ExtResource("1_72bu8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(81.5, 0)
-scale = Vector2(1.41406, 1)
-texture = ExtResource("2_6eodn")
+position = Vector2(6, 0)
+rotation = 1.57079
+scale = Vector2(2.59741, 2.59741)
+texture = ExtResource("2_mtwlf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(81.5, 0)

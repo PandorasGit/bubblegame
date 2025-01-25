@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ba527knk6j3c5"]
 
 [ext_resource type="Script" path="res://bubble/bubble.gd" id="1_xnht4"]
-[ext_resource type="Texture2D" uid="uid://gw2ajqycyo80" path="res://icon.svg" id="2_4j6q7"]
+[ext_resource type="Texture2D" uid="uid://cq7s8g7h87uwo" path="res://bubble/bubble_sprite.png" id="2_35onf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tgich"]
 bounce = 0.25
@@ -22,5 +22,5 @@ shape = SubResource("CircleShape2D_gocvb")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
 position = Vector2(0, 0.5)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_4j6q7")
+scale = Vector2(2, 2)
+texture = ExtResource("2_35onf")

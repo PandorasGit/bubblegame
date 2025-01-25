@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://level/camera.gd" id="6_snpmp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6pl53"]
-size = Vector2(735, 242)
+size = Vector2(3719, 242)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_gseeq")
@@ -25,7 +25,7 @@ position = Vector2(940, 676)
 script = ExtResource("4_x0qmj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(941.5, 772)
+position = Vector2(1206.5, 772)
 shape = SubResource("RectangleShape2D_6pl53")
 
 [node name="Blocks" type="Node2D" parent="."]
