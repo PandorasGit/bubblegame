@@ -53,6 +53,7 @@ text = "Shots Left: x"
 
 [node name="Launcher" parent="." instance=ExtResource("2_64t1t")]
 position = Vector2(10, 549)
+shots = 5
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("3_q5mml")

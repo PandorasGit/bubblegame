@@ -16,6 +16,7 @@ next_level = "res://level/level2.tscn"
 
 [node name="Launcher" parent="." instance=ExtResource("1_hgtue")]
 position = Vector2(10, 549)
+shots = 2
 
 [node name="StaticBody2D" parent="." instance=ExtResource("3_nlf0s")]
 position = Vector2(940, 676)

@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=3 uid="uid://cmafjk5m7qagu"]
+
+[ext_resource type="Script" path="res://level/level.gd" id="1_1f2hj"]
+[ext_resource type="PackedScene" uid="uid://f6ps83t05yju" path="res://launcher/launcher.tscn" id="2_i6sdh"]
+[ext_resource type="Script" path="res://level/score_hole.gd" id="3_2fa6d"]
+[ext_resource type="PackedScene" uid="uid://bl4ppvwgr4t0o" path="res://block/block.tscn" id="4_rnyjg"]
+[ext_resource type="Script" path="res://level/camera.gd" id="5_uffui"]
+[ext_resource type="PackedScene" uid="uid://bhdnbjonf5nx6" path="res://static block/static_block.tscn" id="6_petwu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pl53"]
+size = Vector2(735, 242)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_1f2hj")
+next_level = "res://level2/level2.tscn"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1151.0
+offset_bottom = 646.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 57.0
+offset_bottom = 23.0
+text = "Score:0"
+
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.5
+offset_right = 25.5
+offset_bottom = 31.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Reset"
+
+[node name="ShotsLeft" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Shots Left: x"
+
+[node name="Launcher" parent="." instance=ExtResource("2_i6sdh")]
+position = Vector2(10, 549)
+shots = 5
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_2fa6d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4374.5, 772)
+shape = SubResource("RectangleShape2D_6pl53")
+
+[node name="Blocks" type="Node2D" parent="."]
+
+[node name="Block" parent="Blocks" instance=ExtResource("4_rnyjg")]
+position = Vector2(4425, 568)
+
+[node name="Block3" parent="Blocks" instance=ExtResource("4_rnyjg")]
+position = Vector2(4233, 568)
+
+[node name="Block2" parent="Blocks" instance=ExtResource("4_rnyjg")]
+position = Vector2(4241, 488)
+rotation = 1.5708
+
+[node name="Block5" parent="Blocks" instance=ExtResource("4_rnyjg")]
+position = Vector2(4337, 456)
+rotation = 1.5708
+
+[node name="Block6" parent="Blocks" instance=ExtResource("4_rnyjg")]
+position = Vector2(4208, 456)
+rotation = 1.5708
+
+[node name="Block7" parent="Blocks" instance=ExtResource("4_rnyjg")]
+position = Vector2(4465, 456)
+rotation = 1.5708
+
+[node name="Block4" parent="Blocks" instance=ExtResource("4_rnyjg")]
+position = Vector2(4426, 488)
+rotation = 1.5708
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2304, -576)
+zoom = Vector2(0.25, 0.25)
+script = ExtResource("5_uffui")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("6_petwu")]
+position = Vector2(4233, 696)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("6_petwu")]
+position = Vector2(4425, 696)
+
+[connection signal="block_entered" from="Area2D" to="." method="_on_area_2d_block_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
