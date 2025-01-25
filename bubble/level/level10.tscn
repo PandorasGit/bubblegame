@@ -1,0 +1,175 @@
+[gd_scene load_steps=8 format=3 uid="uid://kbrqppep030j"]
+
+[ext_resource type="Script" path="res://level/level.gd" id="1_pl158"]
+[ext_resource type="PackedScene" uid="uid://f6ps83t05yju" path="res://launcher/launcher.tscn" id="2_kkear"]
+[ext_resource type="Script" path="res://level/score_hole.gd" id="3_6p8nr"]
+[ext_resource type="PackedScene" uid="uid://bl4ppvwgr4t0o" path="res://block/block.tscn" id="4_e4rhx"]
+[ext_resource type="Script" path="res://level/camera.gd" id="5_twdpp"]
+[ext_resource type="PackedScene" uid="uid://bhdnbjonf5nx6" path="res://static block/static_block.tscn" id="6_xjt6g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pl53"]
+size = Vector2(2784, 242)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_pl158")
+next_level = "res://level2/level2.tscn"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1151.0
+offset_bottom = 646.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 57.0
+offset_bottom = 23.0
+text = "Score:0"
+
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.5
+offset_right = 25.5
+offset_bottom = 31.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Reset"
+
+[node name="ShotsLeft" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Shots Left: x"
+
+[node name="Launcher" parent="." instance=ExtResource("2_kkear")]
+position = Vector2(10, 549)
+shots = 5
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_6p8nr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1392, 772)
+shape = SubResource("RectangleShape2D_6pl53")
+
+[node name="Blocks" type="Node2D" parent="."]
+
+[node name="Block" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1297, 528)
+
+[node name="Block2" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1393, 528)
+
+[node name="Block3" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1489, 529)
+
+[node name="Block4" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1201, 528)
+
+[node name="Block24" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1345, 176)
+
+[node name="Block25" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1347, 336)
+
+[node name="Block8" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1250, 528)
+
+[node name="Block9" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1443, 528)
+
+[node name="Block10" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1442, 368)
+
+[node name="Block11" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1251, 369)
+
+[node name="Block14" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1251, 208)
+
+[node name="Block23" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1346, 16)
+
+[node name="Block18" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1444, 208)
+
+[node name="Block5" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1354, 608)
+rotation = 1.5708
+
+[node name="Block6" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1225, 608)
+rotation = 1.5708
+
+[node name="Block12" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1251, 448)
+rotation = 1.5708
+
+[node name="Block15" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1346, 416)
+rotation = 1.5708
+
+[node name="Block16" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1252, 288)
+rotation = 1.5708
+
+[node name="Block20" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1252, 128)
+rotation = 1.5708
+
+[node name="Block17" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1444, 288)
+rotation = 1.5708
+
+[node name="Block21" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1445, 128)
+rotation = 1.5708
+
+[node name="Block19" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1346, 256)
+rotation = 1.5708
+
+[node name="Block22" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1346, 96)
+rotation = 1.5708
+
+[node name="Block13" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1442, 448)
+rotation = 1.5708
+
+[node name="Block7" parent="Blocks" instance=ExtResource("4_e4rhx")]
+position = Vector2(1481, 608)
+rotation = 1.5708
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(768, 218)
+zoom = Vector2(0.75, 0.75)
+script = ExtResource("5_twdpp")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("6_xjt6g")]
+position = Vector2(1249, 688)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("6_xjt6g")]
+position = Vector2(1032, 696)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("6_xjt6g")]
+position = Vector2(1032, 568)
+
+[node name="StaticBody2D5" parent="." instance=ExtResource("6_xjt6g")]
+position = Vector2(1032, 440)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("6_xjt6g")]
+position = Vector2(1441, 688)
+
+[connection signal="block_entered" from="Area2D" to="." method="_on_area_2d_block_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

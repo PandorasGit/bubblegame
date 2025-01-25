@@ -20,8 +20,9 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("blow"):
 		if has_bubble:
-			force += 50
-			$Bubble.grow()
+			if bubble.can_grow:
+				force += 50
+			bubble.grow()
 		elif shots > 0:
 			shots -= 1
 			bubble = bubble_scene.instantiate()
