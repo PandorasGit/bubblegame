@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-var has_bubble := true
-
+var has_bubble := false
+@onready var bubble_scene := load("res://bubble/bubble.tscn")
+var bubble
 
 func _process(delta: float) -> void:
 	var dir = Input.get_axis("up", "down")
@@ -12,11 +13,17 @@ func _process(delta: float) -> void:
 		rotation = deg_to_rad(0)
 	
 	if Input.is_action_just_pressed("blow"):
-		$Bubble.grow()
+		if has_bubble:
+			$Bubble.grow()
+		else:
+			bubble = bubble_scene.instantiate()
+			bubble.position = $Marker2D.position
+			add_child(bubble)
+			has_bubble = true
 	
 	if Input.is_action_just_pressed("fire") and has_bubble:
 
 		has_bubble = false
-		$Bubble.freeze = false
-		$Bubble.apply_impulse(Vector2(100* cos(rotation),100*sin(rotation)), $Bubble.position)
-		$Bubble.reparent(get_parent())
+		bubble.freeze = false
+		bubble.apply_impulse(Vector2(100* cos(rotation),100*sin(rotation)), $Bubble.position)
+		bubble.reparent(get_parent())

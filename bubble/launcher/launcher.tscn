@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://f6ps83t05yju"]
+[gd_scene load_steps=4 format=3 uid="uid://f6ps83t05yju"]
 
 [ext_resource type="Script" path="res://launcher/launcher.gd" id="1_72bu8"]
 [ext_resource type="Texture2D" uid="uid://gw2ajqycyo80" path="res://icon.svg" id="2_6eodn"]
-[ext_resource type="PackedScene" uid="uid://ba527knk6j3c5" path="res://bubble/bubble.tscn" id="3_4e40s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eucw3"]
 size = Vector2(183, 125)
@@ -19,8 +18,5 @@ texture = ExtResource("2_6eodn")
 position = Vector2(81.5, 0)
 shape = SubResource("RectangleShape2D_eucw3")
 
-[node name="Bubble" parent="." instance=ExtResource("3_4e40s")]
-position = Vector2(212, 0)
-
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(180, 0)
+position = Vector2(212, 0)
