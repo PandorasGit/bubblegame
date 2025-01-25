@@ -6,8 +6,8 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tgich"]
 bounce = 0.25
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aty8o"]
-size = Vector2(64, 64)
+[sub_resource type="CircleShape2D" id="CircleShape2D_gocvb"]
+radius = 34.0037
 
 [node name="Bubble" type="RigidBody2D"]
 mass = 0.1
@@ -18,7 +18,7 @@ script = ExtResource("1_xnht4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_aty8o")
+shape = SubResource("CircleShape2D_gocvb")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
 position = Vector2(0, 0.5)

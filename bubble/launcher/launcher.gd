@@ -5,6 +5,10 @@ var has_bubble := false
 var bubble
 @export var shots = 3
 
+signal shots_changed(number_of_shots)
+
+
+
 func _process(delta: float) -> void:
 	var dir = Input.get_axis("up", "down")
 	rotation += dir * delta
@@ -22,6 +26,8 @@ func _process(delta: float) -> void:
 			bubble.position = $Marker2D.position
 			add_child(bubble)
 			has_bubble = true
+			shots_changed.emit(shots)
+
 	
 	if Input.is_action_just_pressed("fire") and has_bubble:
 
