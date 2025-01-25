@@ -3,6 +3,7 @@ extends CharacterBody2D
 var has_bubble := false
 @onready var bubble_scene := load("res://bubble/bubble.tscn")
 var bubble
+@export var shots = 3
 
 func _process(delta: float) -> void:
 	var dir = Input.get_axis("up", "down")
@@ -15,7 +16,8 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("blow"):
 		if has_bubble:
 			$Bubble.grow()
-		else:
+		elif shots > 0:
+			shots -= 1
 			bubble = bubble_scene.instantiate()
 			bubble.position = $Marker2D.position
 			add_child(bubble)
