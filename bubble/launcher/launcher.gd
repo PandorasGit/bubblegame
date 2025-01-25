@@ -4,9 +4,10 @@ var has_bubble := false
 @onready var bubble_scene := load("res://bubble/bubble.tscn")
 var bubble
 @export var shots = 3
+var force = 100
 
 signal shots_changed(number_of_shots)
-
+signal launched(bub)
 
 
 func _process(delta: float) -> void:
@@ -19,6 +20,7 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("blow"):
 		if has_bubble:
+			force += 50
 			$Bubble.grow()
 		elif shots > 0:
 			shots -= 1
@@ -30,8 +32,9 @@ func _process(delta: float) -> void:
 
 	
 	if Input.is_action_just_pressed("fire") and has_bubble:
-
+		launched.emit(bubble)
 		has_bubble = false
 		bubble.freeze = false
-		bubble.apply_impulse(Vector2(100* cos(rotation),100*sin(rotation)), $Bubble.position)
+		bubble.apply_impulse(Vector2(force* cos(rotation),force*sin(rotation)), $Bubble.position)
 		bubble.reparent(get_parent())
+		force = 100
