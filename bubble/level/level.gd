@@ -21,6 +21,7 @@ func _on_area_2d_block_entered() -> void:
 		transition()
 
 func transition():
+	$DASDING.play()
 	$CanvasLayer/Control/Button2.visible = true
 
 

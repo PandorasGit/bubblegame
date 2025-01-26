@@ -1,12 +1,36 @@
-[gd_scene load_steps=9 format=3 uid="uid://btnua346coyrt"]
+[gd_scene load_steps=16 format=3 uid="uid://btnua346coyrt"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_eb8q2"]
 [ext_resource type="Texture2D" uid="uid://cpcs43t4qco6d" path="res://level/bathroom.jpg" id="2_licr1"]
 [ext_resource type="PackedScene" uid="uid://f6ps83t05yju" path="res://launcher/launcher.tscn" id="2_nw4vr"]
+[ext_resource type="Texture2D" uid="uid://byl1w0vy6sec0" path="res://start/soap_button.png" id="3_23dr5"]
 [ext_resource type="Script" path="res://level/score_hole.gd" id="4_cx6be"]
+[ext_resource type="FontFile" uid="uid://bk3r2fqe84e07" path="res://start/SuperFrog-Yqy1q.ttf" id="4_wdlhj"]
 [ext_resource type="Script" path="res://level/camera.gd" id="5_cwl8q"]
 [ext_resource type="PackedScene" uid="uid://bhdnbjonf5nx6" path="res://static block/static_block.tscn" id="5_dge46"]
 [ext_resource type="PackedScene" uid="uid://bl4ppvwgr4t0o" path="res://block/block.tscn" id="5_r85rf"]
+[ext_resource type="AudioStream" uid="uid://b3i3j6hfghuvw" path="res://level/DAS_DING.wav" id="8_jxj5q"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_552co"]
+texture = ExtResource("3_23dr5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_esk8l"]
+texture = ExtResource("3_23dr5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bhfdb"]
+texture = ExtResource("3_23dr5")
+
+[sub_resource type="Theme" id="Theme_6dkon"]
+default_font = ExtResource("4_wdlhj")
+Button/colors/font_color = Color(1, 0.73442, 0.791385, 1)
+Button/colors/font_outline_color = Color(1, 0.523024, 0.650442, 1)
+Button/constants/outline_size = 4
+Button/font_sizes/font_size = 25
+Button/styles/focus = SubResource("StyleBoxTexture_552co")
+Button/styles/hover = SubResource("StyleBoxTexture_552co")
+Button/styles/hover_pressed = SubResource("StyleBoxTexture_esk8l")
+Button/styles/normal = SubResource("StyleBoxTexture_552co")
+Button/styles/pressed = SubResource("StyleBoxTexture_bhfdb")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6pl53"]
 size = Vector2(735, 242)
@@ -16,6 +40,16 @@ script = ExtResource("1_eb8q2")
 next_level = "res://level/level3.tscn"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+scroll_base_scale = Vector2(1.16, 1.16)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(2729, 446)
+scale = Vector2(2.735, 2.735)
+texture = ExtResource("2_licr1")
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -27,6 +61,9 @@ offset_bottom = 646.0
 layout_mode = 0
 offset_right = 57.0
 offset_bottom = 23.0
+theme = SubResource("Theme_6dkon")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
 text = "Score:0"
 
 [node name="Button" type="Button" parent="CanvasLayer/Control"]
@@ -40,6 +77,8 @@ offset_bottom = 31.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = SubResource("Theme_6dkon")
+theme_type_variation = &"FlatButton"
 text = "Reset"
 
 [node name="ShotsLeft" type="Label" parent="CanvasLayer/Control"]
@@ -50,6 +89,9 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 23.0
 grow_horizontal = 0
+theme = SubResource("Theme_6dkon")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
 text = "Shots Left: x"
 
 [node name="Button2" type="Button" parent="CanvasLayer/Control"]
@@ -66,6 +108,7 @@ offset_right = 4.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_6dkon")
 text = "Next Level"
 
 [node name="Button3" type="Button" parent="CanvasLayer/Control"]
@@ -78,17 +121,8 @@ offset_top = 32.0
 offset_right = 27.5
 offset_bottom = 63.0
 grow_horizontal = 2
+theme = SubResource("Theme_6dkon")
 text = "Menu"
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
-scroll_base_scale = Vector2(1.16, 1.16)
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
-position = Vector2(2729, 446)
-scale = Vector2(2.735, 2.735)
-texture = ExtResource("2_licr1")
 
 [node name="Launcher" parent="." instance=ExtResource("2_nw4vr")]
 position = Vector2(10, 549)
@@ -138,6 +172,9 @@ position = Vector2(800, 696)
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("5_dge46")]
 position = Vector2(992, 696)
+
+[node name="DASDING" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_jxj5q")
 
 [connection signal="block_entered" from="Area2D" to="." method="_on_area_2d_block_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

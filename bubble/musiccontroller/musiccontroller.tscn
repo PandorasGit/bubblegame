@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://n5sfg5udunf4"]
+
+[ext_resource type="Script" path="res://musiccontroller/musiccontroller.gd" id="1_0jivj"]
+[ext_resource type="AudioStream" uid="uid://ux4m03rov676" path="res://musiccontroller/670039__seth_makes_sounds__chill-background-music.wav" id="2_5gj4a"]
+
+[node name="Musiccontroller" type="Node"]
+script = ExtResource("1_0jivj")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_5gj4a")

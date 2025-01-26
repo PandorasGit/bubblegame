@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://f6ps83t05yju"]
+[gd_scene load_steps=8 format=3 uid="uid://f6ps83t05yju"]
 
 [ext_resource type="Script" path="res://launcher/launcher.gd" id="1_72bu8"]
 [ext_resource type="Texture2D" uid="uid://ctki6rgm0u2b1" path="res://launcher/bottle.png" id="2_mtwlf"]
 [ext_resource type="Texture2D" uid="uid://cq7s8g7h87uwo" path="res://bubble/bubble_sprite.png" id="3_4g12e"]
+[ext_resource type="AudioStream" uid="uid://dpdynox0p4rvj" path="res://launcher/soap_pump.wav" id="4_8ln5u"]
+[ext_resource type="AudioStream" uid="uid://35uskywvlvsg" path="res://launcher/launcher_launch_sound.wav" id="5_ts1hs"]
+[ext_resource type="AudioStream" uid="uid://te8p0four5d3" path="res://launcher/bubbling.wav" id="6_kilcd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eucw3"]
 size = Vector2(183, 125)
@@ -26,8 +29,22 @@ position = Vector2(212, 0)
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(175, 0)
 emitting = false
+amount = 16
 one_shot = true
+explosiveness = 0.25
 texture = ExtResource("3_4g12e")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 20)
 gravity = Vector2(0, 0)
 initial_velocity_min = 101.01
 initial_velocity_max = 101.01
+scale_amount_min = 0.5
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_8ln5u")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ts1hs")
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_kilcd")

@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://ce3qj3voxv84q"]
+[gd_scene load_steps=7 format=3 uid="uid://ce3qj3voxv84q"]
 
 [ext_resource type="Script" path="res://start/startscreen.gd" id="1_gme8i"]
 [ext_resource type="Texture2D" uid="uid://cpcs43t4qco6d" path="res://level/bathroom.jpg" id="2_iew7i"]
+[ext_resource type="FontFile" uid="uid://bk3r2fqe84e07" path="res://start/SuperFrog-Yqy1q.ttf" id="2_jqjjq"]
+[ext_resource type="Texture2D" uid="uid://byl1w0vy6sec0" path="res://start/soap_button.png" id="4_wuq0p"]
+
+[sub_resource type="Theme" id="Theme_qrno4"]
+default_font = ExtResource("2_jqjjq")
+Button/colors/font_color = Color(1, 0.73442, 0.791385, 1)
+Button/colors/font_outline_color = Color(1, 0.523024, 0.650442, 1)
+Button/constants/outline_size = 4
+Button/font_sizes/font_size = 25
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pmg30"]
+texture = ExtResource("4_wuq0p")
 
 [node name="Startscreen" type="Control"]
 layout_mode = 3
@@ -11,6 +23,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gme8i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1200
+position = Vector2(-8, 536)
+texture = ExtResource("2_iew7i")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = 116.0
+offset_right = 88.0
+offset_bottom = 244.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_qrno4")
+theme_type_variation = &"FlatButton"
+theme_override_fonts/font = ExtResource("2_jqjjq")
+theme_override_styles/focus = SubResource("StyleBoxTexture_pmg30")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_pmg30")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pmg30")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pmg30")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pmg30")
+text = "Play Game"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -33,26 +73,22 @@ size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Bubble Blaster"
+theme = SubResource("Theme_qrno4")
+theme_override_colors/font_color = Color(0.989607, 0.717962, 0.877654, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 130
+text = "Wrecking Bubble"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_qrno4")
+theme_override_colors/font_color = Color(0.981839, 0.702948, 0.472347, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
 text = "A Pandora and Victoria Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Press to Begin"
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1200
-position = Vector2(-8, 536)
-texture = ExtResource("2_iew7i")
-
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

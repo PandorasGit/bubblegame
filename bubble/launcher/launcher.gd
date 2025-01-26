@@ -20,6 +20,8 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("blow"):
 		$CPUParticles2D.emitting = true
+		$AudioStreamPlayer2D.play()
+		$AudioStreamPlayer2D3.play()
 		if has_bubble:
 			if bubble.can_grow:
 				force += 50
@@ -34,7 +36,7 @@ func _process(delta: float) -> void:
 
 	
 	if Input.is_action_just_pressed("fire") and has_bubble:
-		
+		$AudioStreamPlayer2D2.play()
 		launched.emit(bubble)
 		has_bubble = false
 		bubble.freeze = false
