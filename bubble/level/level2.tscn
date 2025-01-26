@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://btnua346coyrt"]
+[gd_scene load_steps=9 format=3 uid="uid://btnua346coyrt"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_eb8q2"]
+[ext_resource type="Texture2D" uid="uid://cpcs43t4qco6d" path="res://level/bathroom.jpg" id="2_licr1"]
 [ext_resource type="PackedScene" uid="uid://f6ps83t05yju" path="res://launcher/launcher.tscn" id="2_nw4vr"]
 [ext_resource type="Script" path="res://level/score_hole.gd" id="4_cx6be"]
 [ext_resource type="Script" path="res://level/camera.gd" id="5_cwl8q"]
@@ -50,6 +51,44 @@ offset_left = -40.0
 offset_bottom = 23.0
 grow_horizontal = 0
 text = "Shots Left: x"
+
+[node name="Button2" type="Button" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next Level"
+
+[node name="Button3" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.5
+offset_top = 32.0
+offset_right = 27.5
+offset_bottom = 63.0
+grow_horizontal = 2
+text = "Menu"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+scroll_base_scale = Vector2(1.16, 1.16)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(2729, 446)
+scale = Vector2(2.735, 2.735)
+texture = ExtResource("2_licr1")
 
 [node name="Launcher" parent="." instance=ExtResource("2_nw4vr")]
 position = Vector2(10, 549)
