@@ -19,6 +19,7 @@ func _process(delta: float) -> void:
 		rotation = deg_to_rad(0)
 	
 	if Input.is_action_just_pressed("blow"):
+		$CPUParticles2D.emitting = true
 		if has_bubble:
 			if bubble.can_grow:
 				force += 50
@@ -33,6 +34,7 @@ func _process(delta: float) -> void:
 
 	
 	if Input.is_action_just_pressed("fire") and has_bubble:
+		
 		launched.emit(bubble)
 		has_bubble = false
 		bubble.freeze = false
